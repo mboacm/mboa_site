@@ -41,7 +41,8 @@
     "legalNotice": "Mentions légales",
     "terms": "Conditions d'utilisation",
     "privacy": "Confidentialité",
-    "cancellation": "Annulation"
+    "cancellation": "Annulation",
+    "verify": "Vérifier un document"
   },
   "topbar": {
     "launch": "Lancement du MVP : {date}",
@@ -327,5 +328,81 @@
       "text": "Cloudflare, Inc. 101 Townsend St, San Francisco, CA 94107, États-Unis, cloudflare.com"
     },
     "toc": "Sommaire"
+  },
+  "verify": {
+    "title": "Vérifier un document Mboa",
+    "description": "Contrat de location ou quittance Mboa : vérifiez en quelques secondes qu'un document imprimé est authentique, avec le numéro et le code inscrits dessus.",
+    "eyebrow": "Authenticité",
+    "heading": "Vérifiez un document",
+    "highlight": "Mboa",
+    "lead": "Une banque, un employeur ou un tribunal vous présente un contrat de location ou une quittance Mboa ? Saisissez le numéro et le code imprimés dessus : vous saurez tout de suite si Mboa a bien émis ce document.",
+    "where": {
+      "title": "Où trouver le numéro et le code ?",
+      "numberTitle": "Le numéro",
+      "numberText": "En haut du document, juste après « N° ». Il compte 36 caractères, tirets compris.",
+      "codeTitle": "Le code",
+      "codeText": "En bas du document, dans la phrase « Authenticité : vérifiez ce document sur mboacm.com/verifier… ». Il compte 32 caractères."
+    },
+    "formTitle": "Vérifier un document",
+    "form": {
+      "type": "Type de document",
+      "contract": "Contrat de location",
+      "receipt": "Quittance ou reçu de paiement",
+      "number": "Numéro du document",
+      "numberHint": "Recopiez-le tel qu'il est imprimé après « N° », tirets compris.",
+      "code": "Code de vérification",
+      "codeHint": "32 caractères : des chiffres et les lettres a à f.",
+      "submit": "Vérifier le document",
+      "submitting": "Vérification en cours…",
+      "again": "Vérifier un autre document"
+    },
+    "errors": {
+      "summary": "Certains champs sont à corriger.",
+      "number": "Ce numéro n'a pas le bon format. Exemple : 3f2a9c1e-5b7d-4e8f-9a0b-1c2d3e4f5a6b.",
+      "code": "Ce code n'a pas le bon format : il compte 32 caractères, des chiffres et les lettres a à f."
+    },
+    "result": {
+      "genuineTitle": "Document authentique",
+      "contractGenuine": "Ce contrat de location a bien été signé par les deux parties dans l'application Mboa. Vérifiez que les informations ci-dessous sont celles du document que vous avez en main.",
+      "receiptGenuine": "Ce document a bien été émis par Mboa. Vérifiez que le montant et la période ci-dessous sont ceux du document que vous avez en main : ce sont eux qu'un faussaire modifierait.",
+      "number": "Numéro",
+      "signedAt": "Signé le",
+      "kind": "Document",
+      "amount": "Montant",
+      "period": "Période",
+      "periodRange": "du {start} au {end}",
+      "issuedAt": "Émis le",
+      "city": "Ville",
+      "district": "Quartier",
+      "noNames": "Pour protéger les personnes concernées, la vérification n'affiche ni nom ni adresse.",
+      "notFoundTitle": "Aucun document ne correspond",
+      "notFoundText": "Aucun document Mboa ne porte ce numéro avec ce code. Vérifiez d'abord votre saisie et le type de document choisi. Si tout est exact, ce document n'a pas été émis par Mboa, ou il a été modifié.",
+      "invalidTitle": "Numéro ou code invalide",
+      "invalidText": "Le numéro ou le code saisi n'a pas un format valide. Recopiez-les tels qu'ils sont imprimés sur le document.",
+      "rateLimitedTitle": "Trop de vérifications",
+      "rateLimitedText": "Vous avez fait beaucoup de vérifications en peu de temps. Réessayez dans {seconds} secondes.",
+      "rateLimitedTextNoDelay": "Vous avez fait beaucoup de vérifications en peu de temps. Réessayez dans une minute.",
+      "unavailableTitle": "Vérification indisponible",
+      "unavailableText": "Le service de vérification ne répond pas pour le moment. Vérifiez votre connexion, puis réessayez dans quelques minutes."
+    },
+    "kinds": {
+      "RENT": "Quittance de loyer",
+      "RENT_PARTIAL": "Reçu de paiement partiel",
+      "DEPOSIT": "Reçu de dépôt de garantie",
+      "INVOICE": "Reçu de paiement de facture",
+      "other": "Reçu de paiement"
+    },
+    "about": {
+      "eyebrow": "Ce que la vérification confirme",
+      "heading": "Un document vérifié,",
+      "highlight": "rien de plus, rien de moins",
+      "contractTitle": "Un contrat de location",
+      "contractText": "Les deux parties l'ont signé dans l'application Mboa, à la date indiquée, pour un logement situé dans la ville et le quartier affichés. Pour le détail des conditions, fiez-vous à l'exemplaire des parties.",
+      "receiptTitle": "Une quittance ou un reçu",
+      "receiptText": "Mboa l'a émis pour ce montant et cette période. Il atteste un paiement déclaré par le locataire et confirmé par le bailleur dans l'application : Mboa ne reçoit ni ne détient les fonds.",
+      "privacyTitle": "Sans données personnelles",
+      "privacyText": "La vérification confirme le document sans en republier le contenu : ni nom, ni adresse. Seule la personne qui l'a en main peut le lire.",
+      "notice": "La signature électronique Mboa atteste que les deux parties ont signé dans l'application, aux date et heure indiquées. Elle ne constitue pas un acte notarié et ne s'y substitue que partiellement."
+    }
   }
 }

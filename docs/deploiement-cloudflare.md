@@ -422,6 +422,7 @@ Ce sont les mêmes que dans ton `.env` (étape 4.3) : Cloudflare en a besoin pou
 | `PUBLIC_SITE_URL` | `https://mboacm.com` | Text |
 | `PUBLIC_TURNSTILE_SITE_KEY` | la Site Key | Text |
 | `PUBLIC_CF_ANALYTICS_TOKEN` | le token | Text |
+| `PUBLIC_API_BASE_URL` | *(facultatif)* vide = `https://api.mboacm.com`. Pour une prévisualisation branchée sur la préproduction : `https://api-staging.mboacm.com` | Text |
 | `NODE_VERSION` | `22` | Text (sans effet si le fichier `.node-version` de la Phase 0 est présent, mais sans danger) |
 
 > **Variables de compilation et secrets d'exécution, la différence.** Les variables ci-dessus servent **pendant la compilation**. Les secrets de l'étape 4.5 (`BREVO_API_KEY`…) servent **pendant l'exécution**. Ils sont déjà en place : ne les recopie pas ici.
@@ -566,6 +567,7 @@ Page du domaine, puis **SSL/TLS**, puis **Edge Certificates**, puis **HTTP Stric
 | `PUBLIC_SITE_URL` | — : `https://mboacm.com` | `.env` | Variable de compilation (6.3) + `wrangler.jsonc` | Non |
 | `PUBLIC_TURNSTILE_SITE_KEY` | Turnstile (3.2) | `.env` | Variable de compilation (6.3) | Non |
 | `PUBLIC_CF_ANALYTICS_TOKEN` | Web Analytics (3.3) | `.env` | Variable de compilation (6.3) | Non |
+| `PUBLIC_API_BASE_URL` | — : vide = `https://api.mboacm.com` (préproduction : `https://api-staging.mboacm.com`) | `.env` | Variable de compilation (6.3), facultative | Non |
 | `TURNSTILE_SECRET_KEY` | Turnstile (3.2) | `.dev.vars` (clé de test) | `wrangler secret put` (4.5) | **Oui** |
 | `BREVO_API_KEY` | Brevo, SMTP & API (3.1) | `.dev.vars` (vide = simulation) | `wrangler secret put` (4.5) | **Oui** |
 | `BREVO_LIST_WAITLIST` | Brevo, Lists (3.1) | `.dev.vars` | `wrangler secret put` (4.5) | Non sensible, mais rangé avec les secrets |
@@ -577,6 +579,7 @@ Page du domaine, puis **SSL/TLS**, puis **Edge Certificates**, puis **HTTP Stric
 |---|---|---|
 | Le formulaire dit « La vérification anti-robot a échoué » | Le domaine n'est pas dans le widget Turnstile, ou la Site Key et la Secret Key ne vont pas ensemble | Vérifie les hostnames du widget (3.2) et que les deux clés viennent du **même** widget |
 | Le formulaire dit « L'inscription est momentanément indisponible » | Un secret manque en production | `npx wrangler secret list` : il faut au moins `TURNSTILE_SECRET_KEY`, `BREVO_API_KEY` et `BREVO_LIST_WAITLIST` |
+| `/verifier` dit « Vérification indisponible » pour un document valide | L'API refuse l'origine du site (CORS) : la console du navigateur affiche « blocked by CORS policy » | Dans le dépôt de l'API, ajouter l'adresse du site (`https://mboacm.com`) à `mboa.cors.allowed-origins` dans `application-prod.yaml`, puis redéployer l'API |
 | Le formulaire dit « n'a pas pu être enregistrée » | Brevo refuse la demande : mauvaise clé, liste inexistante ou attribut manquant | `npx wrangler tail`, puis une inscription test : le journal montre le code d'erreur Brevo. Vérifie les attributs (3.1) |
 | `wrangler deploy` : « Authentication error » | Session expirée | `npx wrangler login` |
 | `wrangler deploy` part sur le mauvais compte | Plusieurs comptes Cloudflare | Ajouter `account_id` dans `wrangler.jsonc` (4.2) |
