@@ -10,6 +10,8 @@ const pages = [
   { path: "/en/privacy", lang: "en" },
   { path: "/mentions-legales", lang: "fr" },
   { path: "/en/legal-notice", lang: "en" },
+  { path: "/verifier", lang: "fr" },
+  { path: "/en/verify", lang: "en" },
 ];
 
 for (const { path, lang } of pages) {
@@ -125,5 +127,6 @@ test.describe("SEO", () => {
     const xml = await (await request.get("/sitemap-0.xml")).text();
     expect(xml).toContain('hreflang="en-CM" href="https://mboacm.com/en/waitlist"');
     expect(xml).toContain('hreflang="fr-CM" href="https://mboacm.com/confidentialite"');
+    expect(xml).toContain('hreflang="en-CM" href="https://mboacm.com/en/verify"');
   });
 });

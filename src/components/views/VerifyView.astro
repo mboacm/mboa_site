@@ -1,0 +1,104 @@
+---
+import DecorDiscs from "@/components/brand/DecorDiscs.astro";
+import VerifyForm from "@/components/islands/VerifyForm.tsx";
+import { verifyCopy } from "@/components/islands/verify-copy";
+import Card from "@/components/ui/Card.astro";
+import Container from "@/components/ui/Container.astro";
+import Icon from "@/components/ui/Icon.astro";
+import Section from "@/components/ui/Section.astro";
+import SectionHeading from "@/components/ui/SectionHeading.astro";
+import type { Locale } from "@/i18n/locales";
+import { t } from "@/i18n/utils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { apiBaseUrl } from "@/lib/verify";
+
+/**
+ * Public check of a printed Mboa contract or receipt — the page the API's PDFs point to
+ * (« Authenticité : vérifiez ce document sur mboacm.com/verifier… », since 2026-11-15).
+ * Sources: the API's verification routes (RM-M08-04 contracts, RM-M30-05 receipts) and the
+ * PDFs' own wording on what the Mboa signature and receipts are.
+ * The browser calls the API directly: the API must list this site's origin in mboa.cors.allowed-origins.
+ */
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const api = apiBaseUrl(import.meta.env.PUBLIC_API_BASE_URL);
+
+const where = [
+  { icon: "file-signature", title: t(locale, "verify.where.numberTitle"), text: t(locale, "verify.where.numberText") },
+  { icon: "key-round", title: t(locale, "verify.where.codeTitle"), text: t(locale, "verify.where.codeText") },
+] as const;
+
+const confirms = [
+  {
+    icon: "file-signature",
+    title: t(locale, "verify.about.contractTitle"),
+    text: t(locale, "verify.about.contractText"),
+  },
+  { icon: "receipt", title: t(locale, "verify.about.receiptTitle"), text: t(locale, "verify.about.receiptText") },
+  { icon: "shield-check", title: t(locale, "verify.about.privacyTitle"), text: t(locale, "verify.about.privacyText") },
+] as const;
+---
+
+<BaseLayout
+  locale={locale}
+  routeKey="verify"
+  title={t(locale, "verify.title")}
+  description={t(locale, "verify.description")}
+>
+  <section class="relative isolate overflow-hidden">
+    <DecorDiscs />
+    <Container class="grid gap-12 py-14 md:py-20 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-16">
+      <div>
+        <SectionHeading
+          level="h1"
+          eyebrow={t(locale, "verify.eyebrow")}
+          title={t(locale, "verify.heading")}
+          highlight={t(locale, "verify.highlight")}
+          description={t(locale, "verify.lead")}
+        />
+        <h2 class="mt-10 text-h3">{t(locale, "verify.where.title")}</h2>
+        <ul class="mt-5 flex flex-col gap-4">
+          {where.map((item) => (
+            <li class="flex gap-4 rounded-card bg-white p-4 shadow-card">
+              <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-forest text-white">
+                <Icon name={item.icon} size={22} />
+              </span>
+              <div>
+                <h3 class="font-display text-base font-bold text-ink">{item.title}</h3>
+                <p class="mt-1 text-sm text-gray-dark">{item.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Card class="p-6 md:p-8">
+        <h2 class="mb-6 text-h3">{t(locale, "verify.formTitle")}</h2>
+        <VerifyForm client:idle copy={verifyCopy(locale)} apiBaseUrl={api} />
+      </Card>
+    </Container>
+  </section>
+
+  <Section tone="warm">
+    <SectionHeading
+      eyebrow={t(locale, "verify.about.eyebrow")}
+      title={t(locale, "verify.about.heading")}
+      highlight={t(locale, "verify.about.highlight")}
+    />
+    <ul class="mt-10 grid gap-6 md:grid-cols-3">
+      {confirms.map((item, index) => (
+        <li class="rounded-card bg-white p-6 shadow-card" data-reveal style={`--reveal-delay: ${index * 120}ms`}>
+          <span class="flex size-11 items-center justify-center rounded-full bg-forest-pale text-forest">
+            <Icon name={item.icon} size={22} />
+          </span>
+          <h3 class="mt-4 text-h3">{item.title}</h3>
+          <p class="mt-2 text-gray-dark">{item.text}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-8 max-w-3xl text-sm text-gray-dark">{t(locale, "verify.about.notice")}</p>
+  </Section>
+</BaseLayout>

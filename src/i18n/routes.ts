@@ -29,6 +29,8 @@ export const routes = {
   terms: { fr: "/cgu", en: "/en/terms" },
   privacy: { fr: "/confidentialite", en: "/en/privacy" },
   cancellation: { fr: "/annulation", en: "/en/cancellation" },
+  // Public check of a printed contract or receipt — the address the API's PDFs print.
+  verify: { fr: "/verifier", en: "/en/verify" },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type RouteKey = keyof typeof routes;
@@ -37,7 +39,7 @@ export type RouteKey = keyof typeof routes;
  * Pages that actually exist. Navigation only links to these, so the site never
  * points to an empty page. Add a key here in the same change that adds its pages.
  */
-export const liveRoutes: readonly RouteKey[] = ["home", "waitlist", "privacy", "legalNotice"];
+export const liveRoutes: readonly RouteKey[] = ["home", "waitlist", "privacy", "legalNotice", "verify"];
 
 export function isLive(key: RouteKey): boolean {
   return liveRoutes.includes(key);

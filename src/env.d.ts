@@ -8,6 +8,8 @@ declare module "cloudflare:workers" {
 interface ImportMetaEnv {
   readonly PUBLIC_TURNSTILE_SITE_KEY?: string;
   readonly PUBLIC_CF_ANALYTICS_TOKEN?: string;
+  /** API origin for the public document check (/verifier). Default: https://api.mboacm.com. */
+  readonly PUBLIC_API_BASE_URL?: string;
 }
 
 declare module "*.yaml?raw" {

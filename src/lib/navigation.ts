@@ -7,7 +7,7 @@ const mainNav: RouteKey[] = ["project", "apps", "audiences", "trust", "pricing",
 const footerColumns = {
   colDiscover: ["project", "market", "apps", "trust", "pricing", "roadmap", "vision", "about", "news", "faq"],
   colJoin: ["waitlist", "owners", "agents", "investors", "press", "contact"],
-  colLegal: ["legalNotice", "terms", "privacy", "cancellation"],
+  colLegal: ["legalNotice", "terms", "privacy", "cancellation", "verify"],
 } as const satisfies Record<string, RouteKey[]>;
 
 export function mainNavItems(): RouteKey[] {
