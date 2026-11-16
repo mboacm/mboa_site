@@ -41,7 +41,8 @@
     "legalNotice": "Legal notice",
     "terms": "Terms of use",
     "privacy": "Privacy",
-    "cancellation": "Cancellation"
+    "cancellation": "Cancellation",
+    "verify": "Verify a document"
   },
   "topbar": {
     "launch": "MVP launch: {date}",
@@ -327,5 +328,81 @@
       "text": "Cloudflare, Inc. — 101 Townsend St, San Francisco, CA 94107, United States, cloudflare.com"
     },
     "toc": "Contents"
+  },
+  "verify": {
+    "title": "Verify a Mboa document",
+    "description": "Mboa lease or rent receipt: check in seconds that a printed document is genuine, using the number and code printed on it.",
+    "eyebrow": "Authenticity",
+    "heading": "Verify a document",
+    "highlight": "from Mboa",
+    "lead": "A bank, an employer or a court has been handed a Mboa lease or rent receipt? Enter the number and code printed on it to find out straight away whether Mboa really issued it.",
+    "where": {
+      "title": "Where are the number and code?",
+      "numberTitle": "The number",
+      "numberText": "At the top of the document, right after “N°”. It is 36 characters long, dashes included.",
+      "codeTitle": "The code",
+      "codeText": "At the bottom of the document, in the sentence “Authenticité : vérifiez ce document sur mboacm.com/verifier…”. It is 32 characters long."
+    },
+    "formTitle": "Verify a document",
+    "form": {
+      "type": "Document type",
+      "contract": "Lease agreement",
+      "receipt": "Rent or payment receipt",
+      "number": "Document number",
+      "numberHint": "Copy it as printed after “N°”, dashes included.",
+      "code": "Verification code",
+      "codeHint": "32 characters: digits and the letters a to f.",
+      "submit": "Verify the document",
+      "submitting": "Verifying…",
+      "again": "Verify another document"
+    },
+    "errors": {
+      "summary": "Some fields need correcting.",
+      "number": "This number doesn't have the right format. Example: 3f2a9c1e-5b7d-4e8f-9a0b-1c2d3e4f5a6b.",
+      "code": "This code doesn't have the right format: 32 characters, digits and the letters a to f."
+    },
+    "result": {
+      "genuineTitle": "Genuine document",
+      "contractGenuine": "Both parties signed this lease in the Mboa app. Check that the details below match the document in front of you.",
+      "receiptGenuine": "Mboa issued this document. Check that the amount and period below match the document in front of you — they are what a forger would change.",
+      "number": "Number",
+      "signedAt": "Signed on",
+      "kind": "Document",
+      "amount": "Amount",
+      "period": "Period",
+      "periodRange": "{start} to {end}",
+      "issuedAt": "Issued on",
+      "city": "City",
+      "district": "Neighbourhood",
+      "noNames": "To protect the people involved, the check shows no names and no address.",
+      "notFoundTitle": "No matching document",
+      "notFoundText": "No Mboa document has this number with this code. First check what you typed and the document type you chose. If everything is correct, Mboa did not issue this document, or it has been altered.",
+      "invalidTitle": "Invalid number or code",
+      "invalidText": "The number or code you entered doesn't have a valid format. Copy them exactly as printed on the document.",
+      "rateLimitedTitle": "Too many checks",
+      "rateLimitedText": "You have run a lot of checks in a short time. Try again in {seconds} seconds.",
+      "rateLimitedTextNoDelay": "You have run a lot of checks in a short time. Try again in a minute.",
+      "unavailableTitle": "Verification unavailable",
+      "unavailableText": "The verification service isn't responding right now. Check your connection, then try again in a few minutes."
+    },
+    "kinds": {
+      "RENT": "Rent receipt",
+      "RENT_PARTIAL": "Partial payment receipt",
+      "DEPOSIT": "Security deposit receipt",
+      "INVOICE": "Bill payment receipt",
+      "other": "Payment receipt"
+    },
+    "about": {
+      "eyebrow": "What the check confirms",
+      "heading": "A verified document,",
+      "highlight": "nothing more, nothing less",
+      "contractTitle": "A lease agreement",
+      "contractText": "Both parties signed it in the Mboa app, on the date shown, for a home in the city and neighbourhood shown. For the detailed terms, rely on the parties' own copy.",
+      "receiptTitle": "A rent or payment receipt",
+      "receiptText": "Mboa issued it for this amount and this period. It records a payment declared by the tenant and confirmed by the landlord in the app — Mboa never receives or holds the money.",
+      "privacyTitle": "No personal data",
+      "privacyText": "The check confirms the document without republishing what it says: no names, no address. Only the person holding it can read it.",
+      "notice": "The Mboa electronic signature certifies that both parties signed in the app, on the date and at the time shown. It is not a notarised deed and only partly stands in for one."
+    }
   }
 }
